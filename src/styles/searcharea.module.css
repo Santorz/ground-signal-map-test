@@ -1,0 +1,27 @@
+.search_area {
+  width: 375px !important;
+  z-index: 500;
+}
+
+.searchfield_container {
+  width: 100% !important;
+}
+.search_box {
+  width: 100% !important;
+  background: transparent;
+}
+.search_icon {
+  margin-right: 0.75rem;
+  background: transparent;
+}
+
+.glass {
+  backdrop-filter: blur(30px) saturate(50%);
+}
+
+.tiniest_text {
+  font-size: 13px !important;
+}
+.tiny_text {
+  font-size: 15px !important;
+}
