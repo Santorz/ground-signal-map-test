@@ -1,7 +1,6 @@
 'use client';
 
 import SearchArea from './components/SearchArea';
-import Map from './components/Map';
 import { useEffect } from 'react';
 import getRealTimeLocation from '@/funcs/getRealTImeLocation';
 import { useDispatch } from 'react-redux';
@@ -10,6 +9,10 @@ import {
   changeUserLocation,
 } from '@/redux/slices/locationSlice';
 import { AppDispatch } from '@/redux/store';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('./components/Map').then((m) => m), {
+  ssr: false,
+});
 
 // Main Home Component
 

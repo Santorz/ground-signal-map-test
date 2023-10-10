@@ -1,42 +1,58 @@
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMap,
-  useMapEvent,
-} from 'react-leaflet';
+'use client';
+
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import { FC, useEffect } from 'react';
+import { FC, Suspense, useEffect } from 'react';
 import { useAppSelector } from '@/redux/store';
+import dynamic from 'next/dynamic';
+import { icon, Marker as MainMarker } from 'leaflet';
+
+// Make components dynamic
+// Dynamic import of react-leaflet components
+const MapContainer = dynamic(
+  () => import('react-leaflet').then((module) => module.MapContainer),
+  {
+    ssr: false, // Disable server-side rendering for this component
+  }
+);
+const TileLayer = dynamic(
+  () => import('react-leaflet').then((module) => module.TileLayer),
+  {
+    ssr: false,
+  }
+);
+const Marker = dynamic(
+  () => import('react-leaflet').then((module) => module.Marker),
+  {
+    ssr: false,
+  }
+);
+const Popup = dynamic(
+  () => import('react-leaflet').then((module) => module.Popup),
+  {
+    ssr: false,
+  }
+);
+const MapSetViewComponent = dynamic(
+  () => import('./MapSetviewComponent').then((module) => module.default),
+  {
+    ssr: false,
+  }
+);
 
 // Random range coordinates
-export function getRandomInRange(from: number, to: number, fixed: number) {
+function getRandomInRange(from: number, to: number, fixed: number) {
   return Math.random() * (to - from) + Number(from.toFixed(fixed)) * 1;
 }
 
-let DefaultIcon = L.icon({
+let DefaultIcon = icon({
   iconUrl: '/icon-pin.svg',
   shadowUrl: '/marker-shadow.png',
   iconSize: [25, 62.5],
 });
 
-L.Marker.prototype.options.icon = DefaultIcon;
+MainMarker.prototype.options.icon = DefaultIcon;
 
 // Function Comp 1 for accessing UseMap hook
-function MyComponent({ activeLoc }: { activeLoc: number[] }) {
-  const map = useMap();
-
-  useEffect(() => {
-    map.setView([activeLoc[0], activeLoc[1]], undefined, {
-      animate: true,
-      duration: 1,
-    });
-  }, [activeLoc, map]);
-
-  return null;
-}
 
 // Main Component
 const Map: FC = () => {
@@ -59,13 +75,15 @@ const Map: FC = () => {
       zoom={13}
       scrollWheelZoom={true}
     >
-      <MyComponent
-        activeLoc={
-          activeLoc
-            ? [activeLoc[0], activeLoc[1]]
-            : [RandomCoord[0], RandomCoord[1]]
-        }
-      />
+      <Suspense fallback={<div className='h-[200px]' />}>
+        <MapSetViewComponent
+          activeLoc={
+            activeLoc
+              ? [activeLoc[0], activeLoc[1]]
+              : [RandomCoord[0], RandomCoord[1]]
+          }
+        />
+      </Suspense>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

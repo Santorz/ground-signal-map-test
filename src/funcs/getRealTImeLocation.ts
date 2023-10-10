@@ -4,7 +4,6 @@ import {
   changeUserLocation,
 } from '@/redux/slices/locationSlice';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { getRandomInRange } from '@/app/components/Map';
 
 // Interfaces
 interface GeoLocAndIPInterface {
@@ -93,3 +92,8 @@ const getCoordsFromIP = async (dispatchFunc: AppDispatch) => {
     dispatchFunc(changeUserLocation(latLongArr));
   }
 };
+
+// Random range coordinates
+function getRandomInRange(from: number, to: number, fixed: number) {
+  return Math.random() * (to - from) + Number(from.toFixed(fixed)) * 1;
+}
