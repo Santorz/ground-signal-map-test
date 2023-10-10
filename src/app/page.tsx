@@ -10,6 +10,9 @@ import {
 } from '@/redux/slices/locationSlice';
 import { AppDispatch } from '@/redux/store';
 import dynamic from 'next/dynamic';
+import Modal from './components/Modal';
+
+// Dynamic Imports
 const Map = dynamic(() => import('./components/Map').then((m) => m), {
   ssr: false,
 });
@@ -31,14 +34,15 @@ export default function Home() {
 
   // JSX
   return (
-    <main className='w-full bg-white dark:bg-black'>
+    <main className='w-full relative bg-white dark:bg-black'>
       {/* Map and Finder container */}
-      <div id='map-and-finder-container' className='relative w-full h-screen'>
+      <div id='map-and-finder-container' className='relative w-full'>
         <SearchArea />
         <Map />
       </div>
 
       {/* Modal here */}
+      <Modal />
     </main>
   );
 }

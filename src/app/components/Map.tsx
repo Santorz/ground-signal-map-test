@@ -1,10 +1,12 @@
 'use client';
 
 import 'leaflet/dist/leaflet.css';
-import { FC, Suspense, useEffect } from 'react';
-import { useAppSelector } from '@/redux/store';
+import { FC, Suspense } from 'react';
+import { useAppSelector, AppDispatch } from '@/redux/store';
 import dynamic from 'next/dynamic';
 import { icon, Marker as MainMarker } from 'leaflet';
+import { useDispatch } from 'react-redux';
+import { triggerModalOpen } from '@/redux/slices/modalActionSlice';
 
 // Make components dynamic
 // Dynamic import of react-leaflet components
@@ -60,11 +62,18 @@ const Map: FC = () => {
   const activeLoc = useAppSelector(
     (state) => state.locationDataStateReducer.value.activeLocation
   );
+  const homeLoc = useAppSelector(
+    (state) => state.locationDataStateReducer.value.usersLocation
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  // Vars
   const RandomCoord = [
     getRandomInRange(-18, 18, 3),
     getRandomInRange(-36, 36, 3),
   ];
 
+  // Main JSX
   return (
     <MapContainer
       center={
@@ -94,6 +103,25 @@ const Map: FC = () => {
             ? [activeLoc[0], activeLoc[1]]
             : [RandomCoord[0], RandomCoord[1]]
         }
+        eventHandlers={{
+          click: () => {
+            // If not home city
+            if (homeLoc !== activeLoc) {
+              // triger modal here
+              dispatch(
+                triggerModalOpen({
+                  isHomeLocation: false,
+                  isOpen: true,
+                  LatLonStringArray: activeLoc ? activeLoc : null,
+                })
+              );
+            }
+
+            // if Home city
+            else {
+            }
+          },
+        }}
       >
         {/* <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.

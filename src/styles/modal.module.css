@@ -1,0 +1,10 @@
+.glass {
+  backdrop-filter: blur(10px) saturate(50%);
+}
+
+.tiniest_text {
+  font-size: 13px !important;
+}
+.tiny_text {
+  font-size: 15px !important;
+}

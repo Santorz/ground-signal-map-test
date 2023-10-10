@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: [
+      'dspncdn.com',
+      's-media-cache-ak0.pinimg.com',
+      '68.media.tumblr.com',
+      's.yimg.com',
+      's3.burpple.com',
+      'images.placeholders.dev',
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -45,7 +45,7 @@ const SearchResults: FC = () => {
           {userInputNotFound && !locationMatchArray && (
             <div
               className={`flex flex-col w-full justify-center items-center 
-              bg-white bg-opacity-75 dark:bg-gray-300 ${styles.glass} p-5`}
+              bg-white bg-opacity-75 dark:bg-gray-200 ${styles.glass} p-5`}
             >
               <Image
                 src='/location-not-found.png'
