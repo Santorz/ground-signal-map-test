@@ -1,15 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+/* This is the slice holding the central stte of both the user's current location
+ and the one selcted on the map*/
+
+//  The Initial State Type
 type InitialState = {
   value: LocationsState;
 };
 type LocType = number[] | null;
 
+// The main state object (location) object type
 type LocationsState = {
   usersLocation: LocType;
   activeLocation: LocType;
 };
 
+// Declaring the first default state variable
 const initialState = {
   value: {
     usersLocation: null,

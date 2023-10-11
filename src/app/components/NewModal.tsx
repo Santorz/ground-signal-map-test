@@ -64,7 +64,7 @@ export default function NewModal() {
           leaveTo='opacity-0'
         >
           <div
-            className={`fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity ${styles.glass}`}
+            className={`fixed inset-0 bg-gray-600 bg-opacity-20 transition-opacity ${styles.glass}`}
           >
             <ModalCLoseButton />
           </div>

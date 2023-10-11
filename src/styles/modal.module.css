@@ -1,5 +1,5 @@
 .glass {
-  backdrop-filter: blur(7px) saturate(50%);
+  backdrop-filter: blur(3px);
 }
 
 .tiniest_text {
