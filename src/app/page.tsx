@@ -15,6 +15,9 @@ import dynamic from 'next/dynamic';
 import NewModal from './components/NewModal';
 
 // Dynamic Imports
+/*Here, I'm dynamically importing the map component on the client side becuase
+the react-leflet library which our map is built on use the window object, which
+cannot be accesibble on initial stream of this component (Server-Side Rendering)*/
 const Map = dynamic(() => import('./components/Map').then((m) => m), {
   ssr: false,
 });

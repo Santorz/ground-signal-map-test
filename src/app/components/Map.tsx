@@ -51,8 +51,6 @@ let DefaultIcon = icon({
 
 MainMarker.prototype.options.icon = DefaultIcon;
 
-// Function Comp 1 for accessing UseMap hook
-
 // Main Component
 const Map: FC = () => {
   // Hooks
@@ -100,10 +98,14 @@ const Map: FC = () => {
             ? [activeLoc[0], activeLoc[1]]
             : [RandomCoord[0], RandomCoord[1]]
         }
+        // This is where the event Hanlder to open the respective modal for a location is fired
         eventHandlers={{
           click: () => {
+            let h = homeLoc;
+            let a = activeLoc;
+
             // If not home city
-            if (homeLoc !== activeLoc) {
+            if (h && a && h[0] !== a[0] && h[1] !== a[1]) {
               // triger modal here
               dispatch(
                 triggerModalOpen({
