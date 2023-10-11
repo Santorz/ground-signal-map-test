@@ -1,3 +1,5 @@
+/*eslint import/no-unresolved: 2*/
+
 import { FC, MouseEventHandler, useCallback } from 'react';
 import styles from '@/styles/searcharea.module.css';
 import sampleData, { SampleDataType } from '@/data-files/sample-data';

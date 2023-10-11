@@ -1,3 +1,5 @@
+/*eslint import/no-unresolved: 2*/
+
 'use client';
 
 import SearchArea from './components/SearchArea';

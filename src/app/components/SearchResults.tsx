@@ -1,3 +1,5 @@
+/*eslint import/no-unresolved: 2*/
+
 import { FC, useContext } from 'react';
 import { LocationMatchAndInputContext } from './SearchArea';
 import styles from '@/styles/searcharea.module.css';

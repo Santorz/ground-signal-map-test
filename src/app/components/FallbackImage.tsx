@@ -1,9 +1,11 @@
+/*eslint import/no-unresolved: 2*/
+
 import { FC, useEffect, useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export const FallbackImage: FC<ImageProps> = ({ src, alt, ...rest }) => {
-  const [imgSrc, setImgSrc] = useState<string | StaticImport>('');
+  const [imgSrc, setImgSrc] = useState<string | StaticImport>(src);
 
   useEffect(() => {
     setImgSrc(src);

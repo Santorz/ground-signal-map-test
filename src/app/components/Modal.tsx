@@ -1,15 +1,6 @@
 import { closeModal } from '@/redux/slices/modalActionSlice';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import {
-  TERipple,
-  TEModal,
-  TEModalDialog,
-  TEModalContent,
-  TEModalHeader,
-  TEModalBody,
-  TEModalFooter,
-} from 'tw-elements-react';
 import styles from '@/styles/modal.module.css';
 import Image from 'next/image';
 import sampleData from '@/data-files/sample-data';
@@ -18,6 +9,27 @@ import Link from 'next/link';
 import ModalCLoseButton from './ModalCloseButton';
 import { FC, ReactNode } from 'react';
 import { FallbackImage } from './FallbackImage';
+import dynamic from 'next/dynamic';
+
+// Dynamic Imports
+const TERipple = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TERipple)
+);
+const TEModal = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TEModal)
+);
+const TEModalDialog = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TEModalDialog)
+);
+const TEModalContent = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TEModalContent)
+);
+const TEModalHeader = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TEModalHeader)
+);
+const TEModalBody = dynamic(() =>
+  import('tw-elements-react').then((res) => res.TEModalBody)
+);
 
 // Main Component
 export default function Modal(): JSX.Element {

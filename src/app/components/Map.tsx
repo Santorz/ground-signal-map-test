@@ -1,3 +1,5 @@
+/*eslint import/no-unresolved: 2*/
+
 'use client';
 
 import 'leaflet/dist/leaflet.css';
@@ -28,12 +30,7 @@ const Marker = dynamic(
     ssr: false,
   }
 );
-const Popup = dynamic(
-  () => import('react-leaflet').then((module) => module.Popup),
-  {
-    ssr: false,
-  }
-);
+
 const MapSetViewComponent = dynamic(
   () => import('./MapSetviewComponent').then((module) => module.default),
   {

@@ -1,3 +1,5 @@
+/*eslint import/no-unresolved: 2*/
+
 import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 

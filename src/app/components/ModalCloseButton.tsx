@@ -1,8 +1,11 @@
+/*eslint import/no-unresolved: 2*/
+
 import { closeModal } from '@/redux/slices/modalActionSlice';
 import { AppDispatch } from '@/redux/store';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 
-export default function ModalCLoseButton() {
+const ModalCLoseButton: FC = () => {
   // Hooks
   const dispatch = useDispatch<AppDispatch>();
 
@@ -32,4 +35,6 @@ export default function ModalCLoseButton() {
       </svg>
     </button>
   );
-}
+};
+
+export default ModalCLoseButton;
