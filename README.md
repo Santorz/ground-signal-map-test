@@ -2,7 +2,7 @@
 
 My submission for the Ground Signal's map test assessment
 
-> ![](./assets/20231011_104511_ground_signal_app_demo_shot_1.png)
+![A screenshot of the App's User Interface](./assets/20231011_104511_ground_signal_app_demo_shot_1.png?raw=true)
 
 > A screenshot of the App's User Interface
 
