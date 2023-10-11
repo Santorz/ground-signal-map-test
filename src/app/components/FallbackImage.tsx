@@ -18,7 +18,7 @@ export const FallbackImage: FC<ImageProps> = ({ src, alt, ...rest }) => {
       src={imgSrc ? imgSrc : '/location-not-found.png'}
       onError={() => {
         setImgSrc(
-          'https://images.placeholders.dev/?width=140&height=150&text=Broken'
+          'https://images.placeholders.dev/?width=140&height=140&text=Broken'
         );
       }}
     />

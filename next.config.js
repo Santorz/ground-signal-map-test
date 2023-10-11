@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    dangerouslyAllowSVG: true,
+
     domains: [
       'dspncdn.com',
       's-media-cache-ak0.pinimg.com',

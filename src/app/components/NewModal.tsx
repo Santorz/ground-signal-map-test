@@ -10,6 +10,7 @@ import Link from 'next/link';
 import getDistance from '@/funcs/getDistance';
 import { FallbackImage } from './FallbackImage';
 import ModalCLoseButton from './ModalCloseButton';
+import Chart from './Chart';
 
 export default function NewModal() {
   // Hooks
@@ -53,8 +54,6 @@ export default function NewModal() {
         // initialFocus={cancelButtonRef}
         onClose={customClose}
       >
-        <ModalCLoseButton />
-
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -66,9 +65,12 @@ export default function NewModal() {
         >
           <div
             className={`fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity ${styles.glass}`}
-          />
+          >
+            <ModalCLoseButton />
+          </div>
         </Transition.Child>
 
+        {/* Modal Content Main */}
         <div className='fixed inset-0 z-10 w-screen overflow-y-auto flex justify-center items-center'>
           <div className='flex  justify-center p-4 text-center sm:items-center sm:p-0'>
             <Transition.Child
@@ -95,7 +97,7 @@ export default function NewModal() {
                     <section className='flex flex-col gap-[1px]'>
                       <h5 className='font-bold text-[18px]'>{name}</h5>{' '}
                       <h6
-                        className={`${styles.tiny_text} leading-none text-gray-400`}
+                        className={`${styles.tiny_text} leading-none text-gray-500`}
                       >{`${lat}, ${lon}`}</h6>
                     </section>
                   </section>
@@ -104,7 +106,7 @@ export default function NewModal() {
                     <Link
                       target='_blank'
                       href={website}
-                      className='inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
+                      className='inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
                     >
                       Visit Website
                     </Link>
@@ -128,11 +130,18 @@ export default function NewModal() {
                     <ImageGrid imageArr={images} />
                   )}
                 </div>
+
+                {/* Chart */}
+                {avgStoreTraffic && (
+                  <Chart data={avgStoreTraffic ? avgStoreTraffic : {}} />
+                )}
+
                 {/* Body End */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </div>
+        {/* Modal Content Main */}
       </Dialog>
     </Transition.Root>
   );

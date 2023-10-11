@@ -39,7 +39,7 @@ const ResultsLists: FC<{ results: SampleDataType }> = ({ results }) => {
   // Main JSX
   return (
     <div
-      className={`flex flex-col w-full bg-white bg-opacity-75 dark:bg-gray-300 ${styles.glass}`}
+      className={`flex flex-col w-full bg-white bg-opacity-75 dark:bg-gray-200 ${styles.glass}`}
     >
       <>
         {results.map((result, index) => {

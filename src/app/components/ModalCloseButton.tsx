@@ -13,7 +13,7 @@ const ModalCLoseButton: FC = () => {
   return (
     <button
       type='button'
-      className={`box-content rounded-none border-none hover:no-underline 
+      className={`z-[1000] box-content rounded-none border-none hover:no-underline 
       hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none
       absolute right-[50px] 30 top-[30px] text-white text-xl`}
       onClick={() => dispatch(closeModal(false))}
