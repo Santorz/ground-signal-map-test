@@ -12,7 +12,7 @@ import {
 } from '@/redux/slices/locationSlice';
 import { AppDispatch } from '@/redux/store';
 import dynamic from 'next/dynamic';
-import Modal from './components/Modal';
+import NewModal from './components/NewModal';
 
 // Dynamic Imports
 const Map = dynamic(() => import('./components/Map').then((m) => m), {
@@ -44,7 +44,7 @@ export default function Home() {
       </div>
 
       {/* Modal here */}
-      <Modal />
+      <NewModal />
     </main>
   );
 }
